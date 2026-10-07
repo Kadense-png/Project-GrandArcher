@@ -1644,9 +1644,12 @@ section { padding: 96px 0; }
 
   section { padding: 28px 0; }
 
-  /* nav is non-functional on paper; keep just the wordmark as a letterhead */
+  /* nav links, hamburger, and the login dropdown itself are non-functional on paper; keep just the wordmark as a letterhead plus a "logged in as" credit line if someone's signed in */
   .site-header { position: static; border-bottom: 2px solid var(--hairline); }
-  .main-nav, .nav-toggle { display: none !important; }
+  .main-nav { display: flex !important; }
+  .main-nav ul, .nav-toggle, .login-dropdown { display: none !important; }
+  .nav-login:not(.nav-login--user) { display: none !important; }
+  .nav-login--user { border: none; padding: 0; gap: 8px; }
 
   /* hero: faded grayscale photo as a quiet backdrop - gradient is hidden since it fades into black and the page is white now, opacity lives on the img itself so it's one fade instead of two stacking */
   .hero { height: 300px; }
@@ -1675,4 +1678,16 @@ section { padding: 96px 0; }
 
   .site-footer { border-top: 2px solid var(--hairline); }
   .footer-links { display: none; }
+
+  /* Playstyles figures and Forge build screenshots: same black-and-white treatment as the hero, but left at full opacity since these carry actual reference info rather than sitting behind text */
+  .playstyle-figure img,
+  .build-card img {
+    filter: grayscale(1) contrast(0.95);
+  }
+
+  /* Profile photo, wherever it shows up — the big avatar circle on the Profile page itself, and the small pill in the header once someone's logged in. The initial-letter fallback (no photo uploaded) is just colored text on a shape, so it's left alone. */
+  .profile-avatar-circle img,
+  .nav-avatar--photo {
+    filter: grayscale(1) contrast(0.95);
+  }
 }
